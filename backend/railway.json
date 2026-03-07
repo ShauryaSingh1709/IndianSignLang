@@ -1,0 +1,9 @@
+{
+  "$schema": "https://railway.app/schema.json",
+  "build": {
+    "dockerfile": "app/Dockerfile"
+  },
+  "deploy": {
+    "numReplicas": 1
+  }
+}

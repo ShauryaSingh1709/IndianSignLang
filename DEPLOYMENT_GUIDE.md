@@ -17,7 +17,7 @@ This guide covers deploying the ISL (Indian Sign Language) Learning Platform usi
 ### Step 1: Prepare Backend for Railway
 
 The backend is already configured with:
-- [`railway.toml`](backend/railway.toml) - Railway configuration
+- [`railway.json`](backend/railway.json) - Railway configuration (JSON format)
 - [`app/Dockerfile`](backend/app/Dockerfile) - Docker build file
 - [`.env.production`](backend/.env.production) - Production environment variables
 
