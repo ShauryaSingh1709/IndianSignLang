@@ -3,7 +3,10 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from typing import Optional
 import jwt
-from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+try:
+    from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+except ImportError:
+    from jwt.exceptions import PyJWTError
 from app.database import get_db
 from app.models.database_models import User
 from app.core.config import settings
