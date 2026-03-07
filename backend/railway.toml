@@ -1,0 +1,13 @@
+[build]
+builder = "docker"
+dockerfile = "app/Dockerfile"
+
+[deploy]
+numReplicas = 1
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[healthcheck]
+path = "/api/health"
+port = 8000
+timeout = 10

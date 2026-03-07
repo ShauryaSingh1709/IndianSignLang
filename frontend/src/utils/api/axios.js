@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../../utils/constants';
 import { toast } from 'react-toastify';
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

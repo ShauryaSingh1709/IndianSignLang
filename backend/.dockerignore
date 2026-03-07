@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.db
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+
+# Tests
+.pytest/
+tests/
+test/
+*_test.py
+
+# Documentation
+*.md
+docs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Node (if any)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
