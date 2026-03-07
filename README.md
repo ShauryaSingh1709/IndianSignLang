@@ -274,10 +274,10 @@ GET    /api/health               Service health check
 
 ### Team Sudarshan — Hackathon Project
 
-| Contributor | GitHub | Role |
-|---|---|---|
-| Shaurya Singh | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) | Full-Stack Developer and ML Engineer |
-| Adi Bariya | [@AdiiBariya](https://github.com/AdiiBariya) | Full-Stack Developer and UI/UX |
+| Contributor | GitHub |
+|---|---|
+| Shaurya Singh | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) |
+| Adi Bariya | [@AdiiBariya](https://github.com/AdiiBariya) |
 
 *Built with dedication by Team Sudarshan.*
 
