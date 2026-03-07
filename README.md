@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🤟 ISL Learning Platform
+# ISL Learning Platform
 
-### *Breaking Barriers, One Sign at a Time*
+### Breaking Barriers, One Sign at a Time
 
-![ISL Platform](https://img.shields.io/badge/ISL-Learning%20Platform-6C63FF?style=for-the-badge&logo=hand&logoColor=white)
+![ISL Platform](https://img.shields.io/badge/ISL-Learning%20Platform-6C63FF?style=for-the-badge)
 ![Version](https://img.shields.io/badge/version-2.0.0-22C55E?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)
@@ -15,229 +15,205 @@
 
 <br/>
 
-> **🏆 Hackathon Project — Team Sudarshan**
+> **Hackathon Project — Team Sudarshan**
 >
-> An AI-powered full-stack platform that makes **Indian Sign Language (ISL)** accessible to everyone through real-time gesture recognition, structured lessons, and gamified learning.
+> An AI-powered full-stack platform that makes Indian Sign Language (ISL) accessible to everyone through real-time gesture recognition, structured lessons, and gamified learning.
 
 <br/>
 
-[✨ Features](#-features) &nbsp;•&nbsp; [🛠 Tech Stack](#-tech-stack) &nbsp;•&nbsp; [🏗 Architecture](#-architecture) &nbsp;•&nbsp; [🚀 Getting Started](#-getting-started) &nbsp;•&nbsp; [📡 API Reference](#-api-reference) &nbsp;•&nbsp; [👥 Team](#-team)
+[Features](#features) &nbsp;|&nbsp; [Tech Stack](#tech-stack) &nbsp;|&nbsp; [Architecture](#architecture) &nbsp;|&nbsp; [Getting Started](#getting-started) &nbsp;|&nbsp; [API Reference](#api-reference) &nbsp;|&nbsp; [Team](#team)
 
 </div>
 
 ---
 
-## 🌟 Why ISL Learning Platform?
+## Why ISL Learning Platform?
 
-Over **63 million people** in India have significant hearing loss, yet ISL remains largely inaccessible to the general population. Our platform addresses this gap by combining **cutting-edge AI** with an **engaging learning experience** — making ISL education available to anyone with a webcam and a browser.
+Over 63 million people in India have significant hearing loss, yet Indian Sign Language remains largely inaccessible to the general population. This platform addresses that gap by combining cutting-edge AI with an engaging learning experience — making ISL education available to anyone with a webcam and a browser.
 
 ---
 
-## ✨ Features
+## Features
 
-<table>
-<tr>
-<td width="50%">
+**Real-Time AI Prediction**
+Live hand gesture recognition using your webcam. MediaPipe detects 21 hand landmarks per frame, which are fed into a TensorFlow model for instant ISL classification with confidence scores.
 
-### 🤖 Real-Time AI Prediction
-Live hand gesture recognition using your webcam. MediaPipe detects 21 hand landmarks per frame, which are fed into a TensorFlow model for instant ISL classification.
+**Structured Lessons**
+Curated, progressive lessons covering ISL alphabets and common gestures — designed for complete beginners through to advanced learners.
 
-</td>
-<td width="50%">
+**Gamification Engine**
+Stay motivated with XP points, daily streaks, achievement badges, and level progression. Learning ISL has never been this engaging.
 
-### 📚 Structured Lessons
-Curated, progressive lessons covering ISL alphabets and common gestures — designed for complete beginners to advanced learners.
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 🏆 Gamification Engine
-Stay motivated with XP points, daily streaks, achievement badges, and level progression — learning ISL has never been this fun.
-
-</td>
-<td width="50%">
-
-### 📊 Progress Analytics
+**Progress Analytics**
 Visual dashboards powered by Recharts show your learning journey — accuracy trends, lesson completion rates, and streak history.
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+**Secure Authentication**
+JWT-based authentication with bcrypt password hashing ensures your data stays safe and sessions remain secure.
 
-### 🔐 Secure Authentication
-JWT-based auth with bcrypt password hashing ensures your data stays safe and your sessions remain secure.
-
-</td>
-<td width="50%">
-
-### 🐳 Production Ready
-Fully containerized with Docker Compose — includes PostgreSQL, Redis, Nginx reverse proxy, and auto-scaling support.
-
-</td>
-</tr>
-</table>
+**Production Ready**
+Fully containerized with Docker Compose — includes PostgreSQL, Redis, Nginx reverse proxy, and support for scaling.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
-### 🔙 Backend
+### Backend
+
 | Technology | Version | Purpose |
 |---|---|---|
-| **FastAPI** | 0.104.1 | High-performance REST API framework |
-| **TensorFlow** | 2.15.0 | Deep learning gesture classification |
-| **MediaPipe** | 0.10.9 | Real-time hand landmark detection |
-| **OpenCV** | 4.8.1 | Image processing pipeline |
-| **SQLAlchemy** | 2.0.23 | ORM for database management |
-| **python-jose** | 3.3.0 | JWT token authentication |
-| **Passlib/bcrypt** | 1.7.4 | Secure password hashing |
+| FastAPI | 0.104.1 | High-performance REST API framework |
+| TensorFlow | 2.15.0 | Deep learning gesture classification |
+| MediaPipe | 0.10.9 | Real-time hand landmark detection |
+| OpenCV | 4.8.1 | Image processing pipeline |
+| SQLAlchemy | 2.0.23 | ORM for database management |
+| python-jose | 3.3.0 | JWT token authentication |
+| Passlib / bcrypt | 1.7.4 | Secure password hashing |
 
-### 🔜 Frontend
+### Frontend
+
 | Technology | Version | Purpose |
 |---|---|---|
-| **React** | 18.2 | Component-based UI |
-| **Redux Toolkit** | 2.0.1 | Global state management |
-| **Tailwind CSS** | 3.3.6 | Utility-first styling |
-| **Framer Motion** | 10.16.5 | Smooth animations |
-| **Recharts** | 2.10.1 | Progress data visualization |
-| **MediaPipe Hands** | 0.4 | Client-side hand tracking |
+| React | 18.2 | Component-based UI library |
+| Redux Toolkit | 2.0.1 | Global state management |
+| Tailwind CSS | 3.3.6 | Utility-first styling |
+| Framer Motion | 10.16.5 | Smooth animations and transitions |
+| Recharts | 2.10.1 | Progress data visualization |
+| MediaPipe Hands | 0.4 | Client-side hand tracking |
 
-### ☁️ Infrastructure
+### Infrastructure
+
 | Technology | Purpose |
 |---|---|
-| **Docker & Compose** | Containerization & orchestration |
-| **PostgreSQL 15** | Production-grade relational database |
-| **Redis 7** | Caching & session management |
-| **Nginx** | Reverse proxy & SSL termination |
+| Docker and Docker Compose | Containerization and orchestration |
+| PostgreSQL 15 | Production-grade relational database |
+| Redis 7 | Caching and session management |
+| Nginx | Reverse proxy and SSL termination |
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 ISL/
-├── 🔙 backend/                     # FastAPI Python backend
+├── backend/                        # FastAPI Python backend
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── auth.py             # 🔐 Authentication endpoints
-│   │   │   ├── lessons.py          # 📚 Lessons CRUD
-│   │   │   ├── prediction.py       # 🤖 ML inference (real-time)
-│   │   │   └── progress.py         # 📊 Progress & gamification
-│   │   ├── core/config.py          # ⚙️  App configuration
-│   │   ├── models/                 # 🗄️  SQLAlchemy ORM models
-│   │   ├── schemas/                # ✅ Pydantic validation schemas
+│   │   │   ├── auth.py             # Authentication endpoints
+│   │   │   ├── lessons.py          # Lessons CRUD
+│   │   │   ├── prediction.py       # ML inference (real-time)
+│   │   │   └── progress.py         # Progress and gamification
+│   │   ├── core/config.py          # App configuration
+│   │   ├── models/                 # SQLAlchemy ORM models
+│   │   ├── schemas/                # Pydantic validation schemas
 │   │   ├── services/
 │   │   │   ├── auth_services.py    # Auth business logic
 │   │   │   ├── gamification.py     # XP, streaks, achievements
 │   │   │   └── ml_model.py         # ISL detector singleton
-│   │   └── main.py                 # 🚀 FastAPI entry point
+│   │   └── main.py                 # FastAPI entry point
 │   └── requirements.txt
 │
-├── 🔜 frontend/                    # React 18 frontend
+├── frontend/                       # React 18 frontend
 │   ├── src/
 │   └── package.json
 │
-├── 🧠 ml_training/                 # Model training scripts & saved models
+├── ml_training/                    # Model training scripts and saved models
 │
-├── 📷 DATASET/                     # ISL gesture image dataset
-│   ├── C/  (1000+ images)
-│   ├── F/  (1000+ images)
-│   ├── G/  (1000+ images)
+├── DATASET/                        # ISL gesture image dataset
+│   ├── C/   (1000+ images)
+│   ├── F/   (1000+ images)
+│   ├── G/   (1000+ images)
 │   └── ...  (all ISL alphabets)
 │
-├── 🐳 docker-compose.yml
-└── 📖 README.md
+├── docker-compose.yml
+└── README.md
 ```
 
 ### API Endpoints Overview
 
 | Module | Base Route | Description |
 |--------|-----------|-------------|
-| 🔐 Auth | `/api/auth` | Register, login, JWT token management |
-| 📚 Lessons | `/api/lessons` | Fetch and manage ISL lessons |
-| 🤖 Prediction | `/api/predict` | Real-time gesture prediction via ML |
-| 📊 Progress | `/api/progress` | User progress, XP & achievements |
-| ❤️ Health | `/api/health` | Service health check |
+| Auth | `/api/auth` | Register, login, JWT token management |
+| Lessons | `/api/lessons` | Fetch and manage ISL lessons |
+| Prediction | `/api/predict` | Real-time gesture prediction via ML |
+| Progress | `/api/progress` | User progress, XP and achievements |
+| Health | `/api/health` | Service health check |
 
 ---
 
-## 🤖 ML Pipeline
+## ML Pipeline
 
 ```
-📷 Webcam Frame
-      │
-      ▼
-🖐️ MediaPipe Hands
-   (21 landmarks detected)
-      │
-      ▼
-📐 Feature Extraction
-   (Normalize & flatten coordinates → 63-dim vector)
-      │
-      ▼
-🧠 TensorFlow Keras Model
-   (Multi-class classification)
-      │
-      ▼
-✅ ISL Letter + Confidence Score
+Webcam Frame
+      |
+      v
+MediaPipe Hands
+(21 landmarks detected per frame)
+      |
+      v
+Feature Extraction
+(Normalize and flatten coordinates into a 63-dimensional vector)
+      |
+      v
+TensorFlow Keras Model
+(Multi-class classification)
+      |
+      v
+ISL Letter + Confidence Score
 ```
 
-The model was trained on a custom dataset of **1000+ images per ISL character**, achieving high accuracy across all supported alphabets.
+The model was trained on a custom dataset of 1000+ images per ISL character, achieving high accuracy across all supported alphabets.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- **Python** 3.10+
-- **Node.js** 18+
-- **Docker & Docker Compose** *(for containerized setup)*
+- Python 3.10+
+- Node.js 18+
+- Docker and Docker Compose (for containerized setup)
 
 ---
 
-### 🐳 Option 1: Docker (Recommended)
+### Option 1: Docker (Recommended)
 
 ```bash
 # Clone the repository
 git clone https://github.com/ShauryaSingh1709/IndianSignLang.git
 cd IndianSignLang/ISL
 
-# Start all services (backend, frontend, DB, Redis, Nginx)
+# Start all services (backend, frontend, database, Redis, Nginx)
 docker-compose up --build
 ```
 
 | Service | URL |
 |---------|-----|
-| 🌐 Frontend | http://localhost:3000 |
-| ⚡ Backend API | http://localhost:8000 |
-| 📖 Swagger Docs | http://localhost:8000/api/docs |
-| 📘 ReDoc | http://localhost:8000/api/redoc |
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:8000 |
+| Swagger Docs | http://localhost:8000/api/docs |
+| ReDoc | http://localhost:8000/api/redoc |
 
 ---
 
-### 🔧 Option 2: Manual Setup
+### Option 2: Manual Setup
 
 #### Backend
 
 ```bash
 cd ISL/backend
 
-# Create virtual environment
+# Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate          # Windows
+# source venv/bin/activate     # macOS/Linux
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure environment
-cp .env.example .env   # Edit with your settings
+# Configure environment variables
+cp .env.example .env
 
-# Start server
+# Start the server
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
@@ -260,9 +236,12 @@ LABEL_ENCODER_PATH=../ml_training/models/label_encoder.pkl
 
 ---
 
-## 📡 API Reference
+## API Reference
 
-Full interactive documentation available at [`/api/docs`](http://localhost:8000/api/docs) (Swagger UI) and [`/api/redoc`](http://localhost:8000/api/redoc).
+Full interactive documentation is available when the backend is running:
+
+- Swagger UI: http://localhost:8000/api/docs
+- ReDoc: http://localhost:8000/api/redoc
 
 ```http
 POST   /api/auth/register        Register a new user
@@ -277,38 +256,38 @@ GET    /api/health               Service health check
 
 ---
 
-## 🎮 Gamification System
+## Gamification System
 
 | Element | Description |
 |---------|-------------|
-| ⭐ **XP Points** | Earned by completing lessons and making correct predictions |
-| 🔥 **Daily Streaks** | Consecutive days of active practice |
-| 🏅 **Achievements** | Unlockable badges for reaching milestones |
-| 📈 **Level System** | Advance through levels as XP accumulates |
-| 📊 **Analytics** | Visual charts of accuracy, completion rate, and streaks |
+| XP Points | Earned by completing lessons and making correct predictions |
+| Daily Streaks | Consecutive days of active practice |
+| Achievements | Unlockable badges for reaching milestones |
+| Level System | Advance through levels as XP accumulates |
+| Analytics | Visual charts of accuracy, completion rate, and streaks |
 
 ---
 
-## 👥 Team
+## Team
 
 <div align="center">
 
-### 🏆 Team Sudarshan
+### Team Sudarshan — Hackathon Project
 
-| | Contributor | GitHub | Role |
-|---|---|---|---|
-| 👨‍💻 | **Shaurya Singh** | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) | Full-Stack Developer & ML Engineer |
-| 👨‍💻 | **Adi Bariya** | [@AdiiBariya](https://github.com/AdiiBariya) | Full-Stack Developer & UI/UX |
+| Contributor | GitHub | Role |
+|---|---|---|
+| Shaurya Singh | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) | Full-Stack Developer and ML Engineer |
+| Adi Bariya | [@AdiiBariya](https://github.com/AdiiBariya) | Full-Stack Developer and UI/UX |
 
-*Built with passion at a Hackathon — Team Sudarshan* 🚀
+*Built with dedication by Team Sudarshan.*
 
 </div>
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome. Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/your-feature`
@@ -318,16 +297,16 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-**⭐ If this project helped you, please give it a star!**
+If this project helped you, please consider giving it a star.
 
-Made with ❤️ by **Team Sudarshan** — making Indian Sign Language accessible to all.
+Made with dedication by Team Sudarshan — making Indian Sign Language accessible to all.
 
 </div>
