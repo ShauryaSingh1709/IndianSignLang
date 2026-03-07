@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== BASIC META ===== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="AI Powered Indian Sign Language Learning Platform" />
+
+  <!-- ===== SEO META ===== -->
+  <meta name="keywords" content="Indian Sign Language, ISL, AI Sign Detection, Learn Sign Language Online" />
+  <meta name="author" content="Adi - ISL Platform" />
+
+  <!-- ===== OPEN GRAPH (Social Sharing) ===== -->
+  <meta property="og:title" content="ISL Learning Platform" />
+  <meta property="og:description" content="AI Based Indian Sign Language Learning Platform with Real-Time Webcam Detection" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="%PUBLIC_URL%/preview.png" />
+
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+  <!-- ===== GOOGLE FONT ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- ===== TITLE ===== -->
+  <title>ISL AI Learning Platform</title>
+
+  <!-- ===== ADVANCED LOADING STYLE ===== -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    #root {
+      min-height: 100vh;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #334155;
+      border-top: 6px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #94a3b8;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== ADVANCED PRELOADER ===== -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <div class="loading-text">Loading ISL AI Engine...</div>
+  </div>
+
+  <!-- ===== REACT ROOT ===== -->
+  <div id="root"></div>
+
+  <!-- ===== REMOVE PRELOADER AFTER LOAD ===== -->
+  <script>
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("preloader");
+      if (loader) {
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.5s ease";
+        setTimeout(() => loader.remove(), 500);
+      }
+    });
+  </script>
+
+</body>
+</html>
