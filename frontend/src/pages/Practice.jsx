@@ -74,6 +74,7 @@ const Practice = () => {
   const [cameraError, setCameraError] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
   const [imageLoadError, setImageLoadError] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
   // Keep ref in sync with state (fixes stale closure bug)
   useEffect(() => {
@@ -368,6 +369,7 @@ const Practice = () => {
         videoRef.current.onloadedmetadata = () => {
           videoRef.current.play().then(() => {
             setIsStreaming(true);
+            setVideoReady(true);
             toast.success(`Camera ready! Show "${currentSignRef.current?.name}"`, { duration: 2000 });
             setTimeout(startDetection, 800);
           }).catch(() => setCameraError('Failed to start video'));
@@ -393,6 +395,7 @@ const Practice = () => {
     }
     if (videoRef.current) videoRef.current.srcObject = null;
     setIsStreaming(false);
+    setVideoReady(false);
     isStreamingRef.current = false;
     resetDetectionState();
   };
@@ -634,7 +637,7 @@ const Practice = () => {
               )}
 
               {/* Loading */}
-              {isStreaming && !videoRef.current?.videoWidth && (
+              {isStreaming && !videoReady && (
                 <div className="camera-loading">
                   <div className="spinner" />
                   <p>Starting camera...</p>

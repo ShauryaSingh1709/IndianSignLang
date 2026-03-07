@@ -1,213 +1,191 @@
-import React, { useState, useEffect } from 'react';
-import { FiTrendingUp, FiAward, FiCalendar, FiUsers } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Common/Navbar';
 import './Leaderboard.css';
 
+const TIMEFRAMES = ['Daily', 'Weekly', 'Monthly', 'All Time'];
+const CATEGORIES = [
+  { id: 'xp',       label: 'XP',       getValue: (u) => `${u.xp.toLocaleString()} XP` },
+  { id: 'streak',   label: 'Streak',   getValue: (u) => `${u.streak} days` },
+  { id: 'lessons',  label: 'Lessons',  getValue: (u) => `${u.lessons} lessons` },
+  { id: 'accuracy', label: 'Accuracy', getValue: (u) => `${u.accuracy}%` },
+];
+
+const AVATAR_COLORS = [
+  'linear-gradient(135deg, #A855F7, #7C3AED)',
+  'linear-gradient(135deg, #EC4899, #BE185D)',
+  'linear-gradient(135deg, #10B981, #059669)',
+  'linear-gradient(135deg, #F59E0B, #D97706)',
+  'linear-gradient(135deg, #3B82F6, #1D4ED8)',
+  'linear-gradient(135deg, #EF4444, #B91C1C)',
+];
+
 const Leaderboard = () => {
-  const [timeframe, setTimeframe] = useState('weekly'); // 'daily', 'weekly', 'monthly', 'alltime'
-  const [category, setCategory] = useState('xp'); // 'xp', 'streak', 'lessons', 'accuracy'
-  const [loading, setLoading] = useState(false);
+  const { user } = useSelector(state => state.auth);
+  const [timeframe, setTimeframe] = useState('Weekly');
+  const [category, setCategory] = useState('xp');
 
-  // Mock leaderboard data
-  const leaderboardData = [
-    { rank: 1, username: 'SignMaster', avatar: null, xp: 15420, streak: 45, lessons: 89, accuracy: 96 },
-    { rank: 2, username: 'ISLPro', avatar: null, xp: 14850, streak: 38, lessons: 76, accuracy: 94 },
-    { rank: 3, username: 'HandTalker', avatar: null, xp: 13200, streak: 30, lessons: 68, accuracy: 91 },
-    { rank: 4, username: 'SignLearner', avatar: null, xp: 11500, streak: 25, lessons: 55, accuracy: 89 },
-    { rank: 5, username: 'GestureGuru', avatar: null, xp: 10800, streak: 22, lessons: 52, accuracy: 88 },
-    { rank: 6, username: 'QuietSpeaker', avatar: null, xp: 9500, streak: 18, lessons: 45, accuracy: 85 },
-    { rank: 7, username: 'SignNewbie', avatar: null, xp: 8200, streak: 15, lessons: 38, accuracy: 82 },
-    { rank: 8, username: 'LearningSigns', avatar: null, xp: 7400, streak: 12, lessons: 32, accuracy: 80 },
-    { rank: 9, username: 'ISLFan', avatar: null, xp: 6800, streak: 10, lessons: 28, accuracy: 78 },
-    { rank: 10, username: 'NewLearner', avatar: null, xp: 5500, streak: 7, lessons: 22, accuracy: 75 },
-  ];
+  const activeCat = CATEGORIES.find(c => c.id === category);
 
-  // Current user (mock)
+  // Real leaderboard data would come from the backend.
+  // Show only the current user if no other data is available.
+  const leaderboardData = [];
+
   const currentUser = {
-    rank: 24,
-    username: 'You',
-    avatar: null,
-    xp: 2500,
-    streak: 15,
-    lessons: 24,
-    accuracy: 85,
-  };
-
-  const getRankEmoji = (rank) => {
-    switch (rank) {
-      case 1: return '🥇';
-      case 2: return '🥈';
-      case 3: return '🥉';
-      default: return rank;
-    }
-  };
-
-  const getRankClass = (rank) => {
-    if (rank === 1) return 'gold';
-    if (rank === 2) return 'silver';
-    if (rank === 3) return 'bronze';
-    return '';
-  };
-
-  const getCategoryValue = (user) => {
-    switch (category) {
-      case 'xp': return `${user.xp.toLocaleString()} XP`;
-      case 'streak': return `${user.streak} days`;
-      case 'lessons': return `${user.lessons} lessons`;
-      case 'accuracy': return `${user.accuracy}%`;
-      default: return user.xp;
-    }
+    rank: '—',
+    username: user?.username || 'You',
+    xp: user?.xp_points || 0,
+    streak: user?.streak_days || 0,
+    lessons: 0,
+    accuracy: 0,
   };
 
   return (
-    <div className="leaderboard-page">
+    <div className="lb-page">
+      {/* Background */}
+      <div className="lb-bg">
+        <div className="lb-bg-main" />
+        <div className="lb-bg-c1" />
+        <div className="lb-bg-c2" />
+        <div className="lb-bg-pattern" />
+      </div>
+
       <Navbar />
-      
-      <div className="leaderboard-container">
-        <div className="leaderboard-header">
-          <h1><FiAward /> Leaderboard</h1>
-          <p>See how you rank against other learners</p>
-        </div>
+
+      <main className="lb-main">
+        {/* Header */}
+        <motion.div
+          className="lb-header"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <div>
+            <h1 className="lb-title">Leaderboard</h1>
+            <p className="lb-subtitle">See how you rank among ISL learners worldwide</p>
+          </div>
+          <Link to="/practice" className="lb-cta-btn">Practice to Climb</Link>
+        </motion.div>
 
         {/* Filters */}
-        <div className="filters-section">
-          <div className="filter-group">
-            <label>Timeframe:</label>
-            <div className="filter-buttons">
-              {['daily', 'weekly', 'monthly', 'alltime'].map((t) => (
+        <motion.div
+          className="lb-filters"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="filter-row">
+            <span className="filter-label">Timeframe</span>
+            <div className="filter-tabs">
+              {TIMEFRAMES.map(t => (
                 <button
                   key={t}
-                  className={`filter-btn ${timeframe === t ? 'active' : ''}`}
+                  className={`filter-tab ${timeframe === t ? 'active' : ''}`}
                   onClick={() => setTimeframe(t)}
                 >
-                  {t === 'alltime' ? 'All Time' : t.charAt(0).toUpperCase() + t.slice(1)}
+                  {t}
                 </button>
               ))}
             </div>
           </div>
-
-          <div className="filter-group">
-            <label>Category:</label>
-            <div className="filter-buttons">
-              <button
-                className={`filter-btn ${category === 'xp' ? 'active' : ''}`}
-                onClick={() => setCategory('xp')}
-              >
-                <FiTrendingUp /> XP
-              </button>
-              <button
-                className={`filter-btn ${category === 'streak' ? 'active' : ''}`}
-                onClick={() => setCategory('streak')}
-              >
-                🔥 Streak
-              </button>
-              <button
-                className={`filter-btn ${category === 'lessons' ? 'active' : ''}`}
-                onClick={() => setCategory('lessons')}
-              >
-                📚 Lessons
-              </button>
-              <button
-                className={`filter-btn ${category === 'accuracy' ? 'active' : ''}`}
-                onClick={() => setCategory('accuracy')}
-              >
-                🎯 Accuracy
-              </button>
+          <div className="filter-row">
+            <span className="filter-label">Rank by</span>
+            <div className="filter-tabs">
+              {CATEGORIES.map(c => (
+                <button
+                  key={c.id}
+                  className={`filter-tab ${category === c.id ? 'active' : ''}`}
+                  onClick={() => setCategory(c.id)}
+                >
+                  {c.label}
+                </button>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Top 3 Podium */}
-        <div className="podium-section">
-          {/* 2nd Place */}
-          <div className="podium-item silver">
-            <div className="podium-avatar">
-              <span>{leaderboardData[1].username.charAt(0)}</span>
-            </div>
-            <div className="podium-rank">🥈</div>
-            <h3>{leaderboardData[1].username}</h3>
-            <p>{getCategoryValue(leaderboardData[1])}</p>
-            <div className="podium-bar"></div>
+        {/* Table */}
+        <motion.div
+          className="lb-table-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="lb-table-header">
+            <span className="th-rank">Rank</span>
+            <span className="th-user">User</span>
+            <span className="th-value">{activeCat.label}</span>
+            <span className="th-streak">Streak</span>
           </div>
 
-          {/* 1st Place */}
-          <div className="podium-item gold">
-            <div className="crown">👑</div>
-            <div className="podium-avatar">
-              <span>{leaderboardData[0].username.charAt(0)}</span>
-            </div>
-            <div className="podium-rank">🥇</div>
-            <h3>{leaderboardData[0].username}</h3>
-            <p>{getCategoryValue(leaderboardData[0])}</p>
-            <div className="podium-bar"></div>
-          </div>
-
-          {/* 3rd Place */}
-          <div className="podium-item bronze">
-            <div className="podium-avatar">
-              <span>{leaderboardData[2].username.charAt(0)}</span>
-            </div>
-            <div className="podium-rank">🥉</div>
-            <h3>{leaderboardData[2].username}</h3>
-            <p>{getCategoryValue(leaderboardData[2])}</p>
-            <div className="podium-bar"></div>
-          </div>
-        </div>
-
-        {/* Leaderboard Table */}
-        <div className="leaderboard-table">
-          <div className="table-header">
-            <span className="col-rank">Rank</span>
-            <span className="col-user">User</span>
-            <span className="col-value">{category.toUpperCase()}</span>
-          </div>
-
-          <div className="table-body">
-            {leaderboardData.slice(3).map((user) => (
-              <div key={user.rank} className={`table-row ${getRankClass(user.rank)}`}>
-                <span className="col-rank">{user.rank}</span>
-                <div className="col-user">
-                  <div className="user-avatar small">
-                    {user.avatar ? (
-                      <img src={user.avatar} alt={user.username} />
-                    ) : (
-                      <span>{user.username.charAt(0)}</span>
-                    )}
-                  </div>
-                  <span className="username">{user.username}</span>
+          <div className="lb-table-body">
+            {leaderboardData.length === 0 ? (
+              <div className="lb-empty">
+                <span className="lb-empty-icon">🏆</span>
+                <p className="lb-empty-title">No rankings yet</p>
+                <p className="lb-empty-sub">
+                  Complete lessons and practice sessions to appear on the leaderboard.
+                </p>
+                <div className="lb-empty-actions">
+                  <Link to="/learn" className="lb-empty-btn">Start Learning</Link>
+                  <Link to="/quiz" className="lb-empty-btn lb-empty-btn-outline">Take a Quiz</Link>
                 </div>
-                <span className="col-value">{getCategoryValue(user)}</span>
               </div>
-            ))}
+            ) : (
+              leaderboardData.map((entry, i) => (
+                <motion.div
+                  key={entry.rank}
+                  className="lb-row"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25 + i * 0.05 }}
+                  whileHover={{ x: 4, background: 'rgba(168,85,247,0.04)' }}
+                >
+                  <span className="td-rank">{entry.rank}</span>
+                  <div className="td-user">
+                    <div className="lb-avatar" style={{ background: AVATAR_COLORS[i % AVATAR_COLORS.length] }}>
+                      {entry.username.charAt(0)}
+                    </div>
+                    <span className="lb-username">{entry.username}</span>
+                  </div>
+                  <span className="td-value">{activeCat.getValue(entry)}</span>
+                  <span className="td-streak">{entry.streak}d</span>
+                </motion.div>
+              ))
+            )}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Your Ranking */}
-        <div className="your-ranking">
-          <h3>Your Ranking</h3>
-          <div className="your-rank-card">
-            <div className="rank-position">
-              <span className="rank-number">#{currentUser.rank}</span>
-              <span className="rank-label">out of 1,245 learners</span>
-            </div>
-            <div className="rank-stats">
-              <div className="rank-stat">
-                <FiTrendingUp />
-                <span>{currentUser.xp.toLocaleString()} XP</span>
-              </div>
-              <div className="rank-stat">
-                <span>🔥</span>
-                <span>{currentUser.streak} days</span>
-              </div>
-              <div className="rank-stat">
-                <span>🎯</span>
-                <span>{currentUser.accuracy}%</span>
-              </div>
-            </div>
-            <button className="btn-improve">Keep Learning to Climb! 🚀</button>
+        {/* Your Rank */}
+        <motion.div
+          className="your-rank-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+        >
+          <div className="your-rank-left">
+            <span className="your-rank-label">Your Rank</span>
+            <span className="your-rank-num">#{currentUser.rank}</span>
+            <span className="your-rank-sub">Keep learning to earn a rank</span>
           </div>
-        </div>
-      </div>
+          <div className="your-rank-stats">
+            <div className="yr-stat">
+              <span className="yr-val purple">{currentUser.xp.toLocaleString()}</span>
+              <span className="yr-lbl">XP</span>
+            </div>
+            <div className="yr-stat">
+              <span className="yr-val">{currentUser.streak}</span>
+              <span className="yr-lbl">Streak</span>
+            </div>
+            <div className="yr-stat">
+              <span className="yr-val green">{currentUser.accuracy}%</span>
+              <span className="yr-lbl">Accuracy</span>
+            </div>
+          </div>
+          <Link to="/practice" className="yr-cta">Keep Practicing</Link>
+        </motion.div>
+      </main>
     </div>
   );
 };

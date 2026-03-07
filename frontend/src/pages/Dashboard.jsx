@@ -28,39 +28,39 @@ const Dashboard = () => {
   const stats = [
     { 
       label: 'Total XP', 
-      value: user?.xp_points || 2450, 
+      value: user?.xp_points || 0, 
       icon: '⚡', 
       color: '#F59E0B',
       bgColor: 'rgba(245, 158, 11, 0.1)',
-      change: '+125',
-      changeType: 'up'
+      change: 'XP',
+      changeType: 'badge'
     },
     { 
       label: 'Current Level', 
-      value: user?.level || 7, 
+      value: user?.level || 1, 
       icon: '👑', 
       color: '#8B5CF6',
       bgColor: 'rgba(139, 92, 246, 0.1)',
-      change: '75%',
-      changeType: 'progress'
+      change: 'Lvl',
+      changeType: 'badge'
     },
     { 
       label: 'Day Streak', 
-      value: user?.streak_days || 12, 
+      value: user?.streak_days || 0, 
       icon: '🔥', 
       color: '#EC4899',
       bgColor: 'rgba(236, 72, 153, 0.1)',
-      change: 'Best!',
+      change: 'days',
       changeType: 'badge'
     },
     { 
       label: 'Signs Learned', 
-      value: user?.total_signs_learned || 86, 
+      value: user?.total_signs_learned || 0, 
       icon: '✋', 
       color: '#10B981',
       bgColor: 'rgba(16, 185, 129, 0.1)',
-      change: '+8',
-      changeType: 'up'
+      change: 'signs',
+      changeType: 'badge'
     },
   ];
 
@@ -77,7 +77,7 @@ const Dashboard = () => {
     return true;
   }) || [];
 
-  const currentLevelXP = (user?.xp_points || 2450) % 1000;
+  const currentLevelXP = (user?.xp_points || 0) % 1000;
   const xpProgress = (currentLevelXP / 1000) * 100;
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -158,11 +158,11 @@ const Dashboard = () => {
             >
               <div style={styles.badge}>
                 <span style={styles.badgeIcon}>🔥</span>
-                <span style={styles.badgeText}>{user?.streak_days || 12} Day Streak</span>
+                <span style={styles.badgeText}>{user?.streak_days || 0} Day Streak</span>
               </div>
               <div style={styles.badge}>
                 <span style={styles.badgeIcon}>💎</span>
-                <span style={styles.badgeText}>Level {user?.level || 7}</span>
+                <span style={styles.badgeText}>Level {user?.level || 1}</span>
               </div>
               <div style={styles.badge}>
                 <span style={styles.badgeIcon}>⭐</span>
@@ -288,7 +288,9 @@ const Dashboard = () => {
                   <span>📚</span>
                 </div>
                 <div>
-                  <h2 style={styles.sectionTitle}>Continue Learning</h2>
+                  <h2 style={styles.sectionTitle}>
+                    <Link to="/learn" style={{ textDecoration: 'none', color: 'inherit' }}>Continue Learning</Link>
+                  </h2>
                   <p style={styles.sectionSubtitle}>{filteredLessons.length} lessons available</p>
                 </div>
               </div>
@@ -345,7 +347,7 @@ const Dashboard = () => {
                       {activeTab === 'completed' ? 'No completed lessons yet' : 'No lessons in progress'}
                     </h3>
                     <p style={styles.emptyText}>Start learning to see your progress here!</p>
-                    <Link to="/lessons" style={{ textDecoration: 'none' }}>
+                    <Link to="/learn" style={{ textDecoration: 'none' }}>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -368,7 +370,7 @@ const Dashboard = () => {
                     ))}
                     
                     {filteredLessons.length > 5 && (
-                      <Link to="/lessons" style={{ textDecoration: 'none' }}>
+                      <Link to="/learn" style={{ textDecoration: 'none' }}>
                         <motion.div
                           whileHover={{ scale: 1.01, y: -2 }}
                           style={styles.viewAllCard}
@@ -398,7 +400,7 @@ const Dashboard = () => {
                   <span style={styles.cardIcon}>⚡</span>
                   <h3 style={styles.cardTitle}>Level Progress</h3>
                 </div>
-                <div style={styles.levelBadge}>Lvl {user?.level || 7}</div>
+                <div style={styles.levelBadge}>Lvl {user?.level || 1}</div>
               </div>
               
               <div style={styles.progressSection}>
@@ -421,7 +423,7 @@ const Dashboard = () => {
               <div style={styles.xpNeededBox}>
                 <span style={styles.xpNeededIcon}>🎯</span>
                 <span style={styles.xpNeededText}>
-                  {1000 - currentLevelXP} XP needed for Level {(user?.level || 7) + 1}
+                  {1000 - currentLevelXP} XP needed for Level {(user?.level || 1) + 1}
                 </span>
               </div>
             </div>
@@ -433,34 +435,10 @@ const Dashboard = () => {
                   <span style={styles.cardIcon}>🎯</span>
                   <h3 style={styles.cardTitle}>Daily Goals</h3>
                 </div>
-                <div style={styles.goalProgress}>2/3</div>
               </div>
-              
-              <div style={styles.goalsGrid}>
-                <GoalItem 
-                  icon="⏱️" 
-                  label="Practice Time" 
-                  current={15} 
-                  target={30} 
-                  unit="min"
-                  color="#8B5CF6"
-                />
-                <GoalItem 
-                  icon="✋" 
-                  label="Signs Learned" 
-                  current={8} 
-                  target={10}
-                  color="#EC4899"
-                />
-                <GoalItem 
-                  icon="📚" 
-                  label="Lessons Done" 
-                  current={3} 
-                  target={3}
-                  color="#10B981"
-                  completed
-                />
-              </div>
+              <p style={{ fontSize: '13px', color: '#9CA3AF', margin: '8px 0 0', lineHeight: 1.5 }}>
+                Complete lessons and practice sessions to track your daily goals here.
+              </p>
             </div>
 
             {/* Weekly Streak */}
@@ -470,7 +448,7 @@ const Dashboard = () => {
                   <span style={styles.cardIcon}>🔥</span>
                   <h3 style={styles.cardTitle}>Weekly Streak</h3>
                 </div>
-                <div style={styles.streakBadge}>{user?.streak_days || 12} days</div>
+                <div style={styles.streakBadge}>{user?.streak_days || 0} days</div>
               </div>
               
               <div style={styles.weekGrid}>
@@ -535,28 +513,9 @@ const Dashboard = () => {
                 <Link to="/achievements" style={styles.viewAllLink}>View All</Link>
               </div>
               
-              <div style={styles.achievementsGrid}>
-                {[
-                  { emoji: '🎯', name: 'First Sign', unlocked: true },
-                  { emoji: '🔥', name: 'Week Streak', unlocked: true },
-                  { emoji: '⭐', name: 'Perfect Score', unlocked: true },
-                  { emoji: '💎', name: 'Level 10', unlocked: false },
-                  { emoji: '🚀', name: 'Speed Demon', unlocked: false },
-                  { emoji: '🎓', name: 'Graduate', unlocked: false },
-                ].map((achievement, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    style={{
-                      ...styles.achievementItem,
-                      ...(achievement.unlocked ? {} : styles.achievementLocked)
-                    }}
-                    title={achievement.name}
-                  >
-                    <span>{achievement.emoji}</span>
-                  </motion.div>
-                ))}
-              </div>
+              <p style={{ fontSize: '13px', color: '#9CA3AF', margin: '8px 0 0', lineHeight: 1.5 }}>
+                Earn achievements by completing lessons, maintaining streaks, and acing quizzes.
+              </p>
             </div>
           </motion.aside>
         </div>
@@ -605,7 +564,7 @@ const Dashboard = () => {
 
 // Lesson Card Component
 const LessonCard = ({ lesson, index }) => {
-  const progress = lesson.progress || Math.floor(Math.random() * 100);
+  const progress = lesson.progress || 0;
   const isCompleted = progress === 100;
   
   const difficultyConfig = {
@@ -616,8 +575,19 @@ const LessonCard = ({ lesson, index }) => {
   
   const config = difficultyConfig[lesson.difficulty] || difficultyConfig.beginner;
 
+  // Map backend lesson to a known course route
+  const getCourseLink = () => {
+    const title = (lesson.title || '').toLowerCase();
+    if (title.includes('number')) return '/learn/numbers';
+    if (title.includes('a to i') || title.includes('a-i') || title.includes('basic')) return '/learn/alphabets-basics';
+    if (title.includes('j to r') || title.includes('j-r') || title.includes('intermediate')) return '/learn/alphabets-intermediate';
+    if (title.includes('s to z') || title.includes('s-z') || title.includes('advanced')) return '/learn/alphabets-advanced';
+    if (title.includes('complete') || title.includes('all')) return '/learn/all-alphabets';
+    return '/learn';
+  };
+
   return (
-    <Link to={`/lesson/${lesson.id}`} style={{ textDecoration: 'none' }}>
+    <Link to={getCourseLink()} style={{ textDecoration: 'none' }}>
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -635,13 +605,13 @@ const LessonCard = ({ lesson, index }) => {
               borderColor: `${config.color}30`
             }}
           >
-            <span style={lessonStyles.icon}>{lesson.icon || '📖'}</span>
+            <span style={lessonStyles.icon}>{lesson.icon || (lesson.category === 'numbers' ? '🔢' : '🤟')}</span>
           </motion.div>
 
           {/* Info */}
           <div style={lessonStyles.info}>
             <div style={lessonStyles.titleRow}>
-              <h3 style={lessonStyles.title}>{lesson.title || 'Basic Greetings'}</h3>
+              <h3 style={lessonStyles.title}>{lesson.title}</h3>
               {isCompleted && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -653,15 +623,19 @@ const LessonCard = ({ lesson, index }) => {
               )}
             </div>
             <p style={lessonStyles.description}>
-              {lesson.description || 'Learn essential greeting signs in ISL'}
+              {lesson.description}
             </p>
             <div style={lessonStyles.metaRow}>
-              <span style={lessonStyles.metaItem}>
-                <span>⏱️</span> {lesson.duration || '10 min'}
-              </span>
-              <span style={lessonStyles.metaItem}>
-                <span>✋</span> {lesson.signs_count || 12} signs
-              </span>
+              {lesson.duration && (
+                <span style={lessonStyles.metaItem}>
+                  <span>⏱️</span> {lesson.duration}
+                </span>
+              )}
+              {lesson.signs_count > 0 && (
+                <span style={lessonStyles.metaItem}>
+                  <span>✋</span> {lesson.signs_count} signs
+                </span>
+              )}
               <span style={{
                 ...lessonStyles.difficultyBadge,
                 backgroundColor: config.bg,
