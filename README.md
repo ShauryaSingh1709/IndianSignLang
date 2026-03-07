@@ -1,70 +1,117 @@
-# 🤟 ISL Learning Platform
-
 <div align="center">
 
-![ISL Platform](https://img.shields.io/badge/ISL-Learning%20Platform-blue?style=for-the-badge&logo=hand)
-![Version](https://img.shields.io/badge/version-2.0.0-green?style=for-the-badge)
+# 🤟 ISL Learning Platform
+
+### *Breaking Barriers, One Sign at a Time*
+
+![ISL Platform](https://img.shields.io/badge/ISL-Learning%20Platform-6C63FF?style=for-the-badge&logo=hand&logoColor=white)
+![Version](https://img.shields.io/badge/version-2.0.0-22C55E?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-purple?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-A855F7?style=for-the-badge)
 
-**An AI-powered platform for learning Indian Sign Language (ISL) with real-time hand gesture recognition.**
+<br/>
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Architecture](#-architecture) • [Getting Started](#-getting-started) • [API Reference](#-api-reference)
+> **🏆 Hackathon Project — Team Sudarshan**
+>
+> An AI-powered full-stack platform that makes **Indian Sign Language (ISL)** accessible to everyone through real-time gesture recognition, structured lessons, and gamified learning.
+
+<br/>
+
+[✨ Features](#-features) &nbsp;•&nbsp; [🛠 Tech Stack](#-tech-stack) &nbsp;•&nbsp; [🏗 Architecture](#-architecture) &nbsp;•&nbsp; [🚀 Getting Started](#-getting-started) &nbsp;•&nbsp; [📡 API Reference](#-api-reference) &nbsp;•&nbsp; [👥 Team](#-team)
 
 </div>
 
 ---
 
-## 📖 Overview
+## 🌟 Why ISL Learning Platform?
 
-The **ISL Learning Platform** is a full-stack web application that bridges the communication gap by making Indian Sign Language accessible to everyone. It combines computer vision, deep learning, and gamified learning to provide an interactive and engaging ISL learning experience.
-
-Users can learn ISL alphabets and gestures through structured lessons, practice with real-time webcam-based gesture recognition powered by **MediaPipe** and **TensorFlow**, and track their progress through a gamified system with XP, streaks, and achievements.
+Over **63 million people** in India have significant hearing loss, yet ISL remains largely inaccessible to the general population. Our platform addresses this gap by combining **cutting-edge AI** with an **engaging learning experience** — making ISL education available to anyone with a webcam and a browser.
 
 ---
 
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| 🤖 **Real-Time Prediction** | Live hand gesture recognition using webcam with MediaPipe landmark detection |
-| 📚 **Structured Lessons** | Curated lessons covering ISL alphabets and common gestures |
-| 📊 **Progress Tracking** | Detailed learning analytics with XP points, streaks, and level progression |
-| 🏆 **Gamification** | Achievement system, daily streaks, and leaderboards to keep learners motivated |
-| 🔐 **Authentication** | Secure JWT-based user authentication and authorization |
-| 📱 **Responsive UI** | Mobile-friendly React frontend with smooth animations |
-| 🐳 **Docker Support** | Full containerized deployment with Docker Compose |
+<table>
+<tr>
+<td width="50%">
+
+### 🤖 Real-Time AI Prediction
+Live hand gesture recognition using your webcam. MediaPipe detects 21 hand landmarks per frame, which are fed into a TensorFlow model for instant ISL classification.
+
+</td>
+<td width="50%">
+
+### 📚 Structured Lessons
+Curated, progressive lessons covering ISL alphabets and common gestures — designed for complete beginners to advanced learners.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🏆 Gamification Engine
+Stay motivated with XP points, daily streaks, achievement badges, and level progression — learning ISL has never been this fun.
+
+</td>
+<td width="50%">
+
+### 📊 Progress Analytics
+Visual dashboards powered by Recharts show your learning journey — accuracy trends, lesson completion rates, and streak history.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔐 Secure Authentication
+JWT-based auth with bcrypt password hashing ensures your data stays safe and your sessions remain secure.
+
+</td>
+<td width="50%">
+
+### 🐳 Production Ready
+Fully containerized with Docker Compose — includes PostgreSQL, Redis, Nginx reverse proxy, and auto-scaling support.
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🛠 Tech Stack
 
-### Backend
-- **[FastAPI](https://fastapi.tiangolo.com/)** — High-performance Python web framework
-- **[SQLAlchemy](https://www.sqlalchemy.org/)** — ORM for database management (SQLite / PostgreSQL)
-- **[TensorFlow 2.15](https://tensorflow.org/)** — Deep learning model for gesture classification
-- **[MediaPipe](https://mediapipe.dev/)** — Real-time hand landmark detection
-- **[OpenCV](https://opencv.org/)** — Image processing pipeline
-- **[python-jose](https://github.com/mpdavis/python-jose)** — JWT token handling
-- **[Passlib / bcrypt](https://passlib.readthedocs.io/)** — Password hashing
+### 🔙 Backend
+| Technology | Version | Purpose |
+|---|---|---|
+| **FastAPI** | 0.104.1 | High-performance REST API framework |
+| **TensorFlow** | 2.15.0 | Deep learning gesture classification |
+| **MediaPipe** | 0.10.9 | Real-time hand landmark detection |
+| **OpenCV** | 4.8.1 | Image processing pipeline |
+| **SQLAlchemy** | 2.0.23 | ORM for database management |
+| **python-jose** | 3.3.0 | JWT token authentication |
+| **Passlib/bcrypt** | 1.7.4 | Secure password hashing |
 
-### Frontend
-- **[React 18](https://react.dev/)** — Component-based UI library
-- **[Redux Toolkit](https://redux-toolkit.js.org/)** — State management
-- **[React Router v6](https://reactrouter.com/)** — Client-side routing
-- **[Tailwind CSS](https://tailwindcss.com/)** — Utility-first styling
-- **[Framer Motion](https://www.framer.com/motion/)** — Animations and transitions
-- **[Recharts](https://recharts.org/)** — Data visualization for progress analytics
-- **[MediaPipe Hands](https://google.github.io/mediapipe/solutions/hands)** — Client-side hand tracking
+### 🔜 Frontend
+| Technology | Version | Purpose |
+|---|---|---|
+| **React** | 18.2 | Component-based UI |
+| **Redux Toolkit** | 2.0.1 | Global state management |
+| **Tailwind CSS** | 3.3.6 | Utility-first styling |
+| **Framer Motion** | 10.16.5 | Smooth animations |
+| **Recharts** | 2.10.1 | Progress data visualization |
+| **MediaPipe Hands** | 0.4 | Client-side hand tracking |
 
-### Infrastructure
-- **[Docker & Docker Compose](https://www.docker.com/)** — Containerization
-- **[PostgreSQL](https://www.postgresql.org/)** — Production database
-- **[Redis](https://redis.io/)** — Caching layer
-- **[Nginx](https://nginx.org/)** — Reverse proxy
+### ☁️ Infrastructure
+| Technology | Purpose |
+|---|---|
+| **Docker & Compose** | Containerization & orchestration |
+| **PostgreSQL 15** | Production-grade relational database |
+| **Redis 7** | Caching & session management |
+| **Nginx** | Reverse proxy & SSL termination |
 
 ---
 
@@ -72,48 +119,73 @@ Users can learn ISL alphabets and gestures through structured lessons, practice 
 
 ```
 ISL/
-├── backend/                    # FastAPI backend
+├── 🔙 backend/                     # FastAPI Python backend
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── auth.py         # Authentication endpoints
-│   │   │   ├── lessons.py      # Lessons CRUD endpoints
-│   │   │   ├── prediction.py   # ML inference endpoints
-│   │   │   └── progress.py     # Progress tracking endpoints
-│   │   ├── core/
-│   │   │   └── config.py       # App configuration & settings
-│   │   ├── models/
-│   │   │   └── database_models.py  # SQLAlchemy ORM models
-│   │   ├── schemas/
-│   │   │   └── progress.py     # Pydantic schemas
+│   │   │   ├── auth.py             # 🔐 Authentication endpoints
+│   │   │   ├── lessons.py          # 📚 Lessons CRUD
+│   │   │   ├── prediction.py       # 🤖 ML inference (real-time)
+│   │   │   └── progress.py         # 📊 Progress & gamification
+│   │   ├── core/config.py          # ⚙️  App configuration
+│   │   ├── models/                 # 🗄️  SQLAlchemy ORM models
+│   │   ├── schemas/                # ✅ Pydantic validation schemas
 │   │   ├── services/
 │   │   │   ├── auth_services.py    # Auth business logic
-│   │   │   ├── gamification.py     # XP & achievement logic
-│   │   │   └── ml_model.py         # ISL detector service
-│   │   ├── database.py         # Database connection
-│   │   └── main.py             # FastAPI app entry point
+│   │   │   ├── gamification.py     # XP, streaks, achievements
+│   │   │   └── ml_model.py         # ISL detector singleton
+│   │   └── main.py                 # 🚀 FastAPI entry point
 │   └── requirements.txt
-├── frontend/                   # React frontend
+│
+├── 🔜 frontend/                    # React 18 frontend
 │   ├── src/
 │   └── package.json
-├── ml_training/                # Model training scripts & saved models
-├── DATASET/                    # ISL gesture image dataset
-│   ├── C/                      # ~1000+ images per letter
-│   ├── F/
-│   ├── G/
-│   └── ...
-├── docker-compose.yml
-└── README.md
+│
+├── 🧠 ml_training/                 # Model training scripts & saved models
+│
+├── 📷 DATASET/                     # ISL gesture image dataset
+│   ├── C/  (1000+ images)
+│   ├── F/  (1000+ images)
+│   ├── G/  (1000+ images)
+│   └── ...  (all ISL alphabets)
+│
+├── 🐳 docker-compose.yml
+└── 📖 README.md
 ```
 
-### API Structure
+### API Endpoints Overview
 
 | Module | Base Route | Description |
 |--------|-----------|-------------|
-| Auth | `/api/auth` | Register, login, token refresh |
-| Lessons | `/api/lessons` | Fetch and manage lessons |
-| Prediction | `/api/predict` | Real-time gesture prediction |
-| Progress | `/api/progress` | User progress & gamification |
-| Health | `/api/health` | Service health check |
+| 🔐 Auth | `/api/auth` | Register, login, JWT token management |
+| 📚 Lessons | `/api/lessons` | Fetch and manage ISL lessons |
+| 🤖 Prediction | `/api/predict` | Real-time gesture prediction via ML |
+| 📊 Progress | `/api/progress` | User progress, XP & achievements |
+| ❤️ Health | `/api/health` | Service health check |
+
+---
+
+## 🤖 ML Pipeline
+
+```
+📷 Webcam Frame
+      │
+      ▼
+🖐️ MediaPipe Hands
+   (21 landmarks detected)
+      │
+      ▼
+📐 Feature Extraction
+   (Normalize & flatten coordinates → 63-dim vector)
+      │
+      ▼
+🧠 TensorFlow Keras Model
+   (Multi-class classification)
+      │
+      ▼
+✅ ISL Letter + Confidence Score
+```
+
+The model was trained on a custom dataset of **1000+ images per ISL character**, achieving high accuracy across all supported alphabets.
 
 ---
 
@@ -123,7 +195,7 @@ ISL/
 
 - **Python** 3.10+
 - **Node.js** 18+
-- **Docker** & **Docker Compose** (optional, for containerized setup)
+- **Docker & Docker Compose** *(for containerized setup)*
 
 ---
 
@@ -131,62 +203,53 @@ ISL/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/isl-learning-platform.git
-cd isl-learning-platform/ISL
+git clone https://github.com/ShauryaSingh1709/IndianSignLang.git
+cd IndianSignLang/ISL
 
-# Start all services
+# Start all services (backend, frontend, DB, Redis, Nginx)
 docker-compose up --build
 ```
 
 | Service | URL |
 |---------|-----|
-| Frontend | http://localhost:3000 |
-| Backend API | http://localhost:8000 |
-| API Docs (Swagger) | http://localhost:8000/api/docs |
-| API Docs (ReDoc) | http://localhost:8000/api/redoc |
+| 🌐 Frontend | http://localhost:3000 |
+| ⚡ Backend API | http://localhost:8000 |
+| 📖 Swagger Docs | http://localhost:8000/api/docs |
+| 📘 ReDoc | http://localhost:8000/api/redoc |
 
 ---
 
 ### 🔧 Option 2: Manual Setup
 
-#### 1. Backend Setup
+#### Backend
 
 ```bash
 cd ISL/backend
 
-# Create and activate virtual environment
+# Create virtual environment
 python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure environment variables
-cp .env.example .env
-# Edit .env with your settings
+# Configure environment
+cp .env.example .env   # Edit with your settings
 
-# Start the backend server
+# Start server
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-#### 2. Frontend Setup
+#### Frontend
 
 ```bash
 cd ISL/frontend
-
-# Install dependencies
 npm install
-
-# Start development server
 npm start
 ```
 
-#### 3. Environment Variables
-
-Create `ISL/backend/.env`:
+#### Environment Variables (`backend/.env`)
 
 ```env
 SECRET_KEY=your-super-secret-key-change-in-production
@@ -197,53 +260,49 @@ LABEL_ENCODER_PATH=../ml_training/models/label_encoder.pkl
 
 ---
 
-## 🤖 ML Model
-
-The gesture recognition pipeline works as follows:
-
-1. **Video Capture** — Webcam frames are captured in the React frontend or sent as base64 to the API
-2. **Hand Detection** — MediaPipe Hands detects 21 hand landmarks per frame
-3. **Feature Extraction** — Landmark coordinates are normalized and flattened into a feature vector
-4. **Classification** — A TensorFlow Keras model classifies the gesture into an ISL letter/sign
-5. **Result** — Prediction with confidence score is returned in real-time
-
-### Dataset
-
-The `DATASET/` directory contains labeled hand gesture images organized per ISL character (e.g., `C/`, `F/`, `G/`, ...), with 100–1000+ images per class used to train the recognition model.
-
----
-
 ## 📡 API Reference
 
-Interactive API documentation is automatically available when the backend is running:
-
-- **Swagger UI**: [`/api/docs`](http://localhost:8000/api/docs)
-- **ReDoc**: [`/api/redoc`](http://localhost:8000/api/redoc)
-
-### Key Endpoints
+Full interactive documentation available at [`/api/docs`](http://localhost:8000/api/docs) (Swagger UI) and [`/api/redoc`](http://localhost:8000/api/redoc).
 
 ```http
-POST   /api/auth/register       Register a new user
-POST   /api/auth/login          Login and receive JWT token
-GET    /api/lessons             Get all lessons
-GET    /api/lessons/{id}        Get lesson by ID
-POST   /api/predict/image       Predict ISL gesture from base64 image
-GET    /api/progress            Get user learning progress
-POST   /api/progress/complete   Mark a lesson as completed
-GET    /api/health              Service health check
+POST   /api/auth/register        Register a new user
+POST   /api/auth/login           Login and receive JWT token
+GET    /api/lessons              Get all available lessons
+GET    /api/lessons/{id}         Get lesson by ID
+POST   /api/predict/image        Predict ISL gesture from base64 image
+GET    /api/progress             Get authenticated user's progress
+POST   /api/progress/complete    Mark a lesson as completed
+GET    /api/health               Service health check
 ```
 
 ---
 
 ## 🎮 Gamification System
 
-The platform motivates learners through:
+| Element | Description |
+|---------|-------------|
+| ⭐ **XP Points** | Earned by completing lessons and making correct predictions |
+| 🔥 **Daily Streaks** | Consecutive days of active practice |
+| 🏅 **Achievements** | Unlockable badges for reaching milestones |
+| 📈 **Level System** | Advance through levels as XP accumulates |
+| 📊 **Analytics** | Visual charts of accuracy, completion rate, and streaks |
 
-- **⭐ XP Points** — Earned by completing lessons and correct predictions
-- **🔥 Daily Streaks** — Consecutive days of practice
-- **🏅 Achievements** — Unlockable badges for milestones
-- **📈 Level Progression** — Advance through levels as XP accumulates
-- **📊 Analytics Dashboard** — Visual charts of learning progress over time
+---
+
+## 👥 Team
+
+<div align="center">
+
+### 🏆 Team Sudarshan
+
+| | Contributor | GitHub | Role |
+|---|---|---|---|
+| 👨‍💻 | **Shaurya Singh** | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) | Full-Stack Developer & ML Engineer |
+| 👨‍💻 | **Adi Bariya** | [@AdiiBariya](https://github.com/AdiiBariya) | Full-Stack Developer & UI/UX |
+
+*Built with passion at a Hackathon — Team Sudarshan* 🚀
+
+</div>
 
 ---
 
@@ -267,6 +326,8 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 <div align="center">
 
-Made with ❤️ to make Indian Sign Language accessible to all.
+**⭐ If this project helped you, please give it a star!**
+
+Made with ❤️ by **Team Sudarshan** — making Indian Sign Language accessible to all.
 
 </div>
