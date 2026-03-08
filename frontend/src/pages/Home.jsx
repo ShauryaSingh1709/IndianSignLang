@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FiBook, FiTarget, FiAward, FiUsers, FiArrowRight, FiCheck, FiStar } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiBook, FiTarget, FiAward, FiUsers, FiArrowRight, FiCheck, FiStar, FiHeart, FiX } from 'react-icons/fi';
 import './Home.css';
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showQRModal, setShowQRModal] = useState(false);
+
+  // Replace this with your actual catbox QR code URL
+  const QR_CODE_URL = "https://files.catbox.moe/your-qr-code.png";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +65,14 @@ const Home = () => {
     { emoji: '🌟', word: 'Star', color: '#F59E0B' },
   ];
 
+  const handleDonateClick = () => {
+    setShowQRModal(true);
+  };
+
+  const openQRInNewTab = () => {
+    window.open(QR_CODE_URL, '_blank');
+  };
+
   return (
     <div className="home-wrapper">
       {/* Beautiful Background */}
@@ -106,19 +118,10 @@ const Home = () => {
             <span className="brand-text">ISL Learn</span>
           </Link>
 
-          <div className="nav-links">
+          <div className="nav-links-center">
             <a href="#features" className="nav-link">Features</a>
             <a href="#how-it-works" className="nav-link">How it Works</a>
-          </div>
-
-          <div className="nav-actions">
-            <Link to="/login" className="btn-login">
-              Sign In
-            </Link>
-            <Link to="/register" className="btn-register">
-              <span>Get Started</span>
-              <FiArrowRight />
-            </Link>
+            <a href="#donate" className="nav-link">Donate</a>
           </div>
         </div>
       </motion.nav>
@@ -419,42 +422,110 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-container">
+      {/* Donation Section */}
+      <section id="donate" className="donation-section">
+        <div className="donation-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="cta-content"
+            className="donation-content"
           >
-            <h2 className="cta-title">Ready to Start Your Journey?</h2>
-            <p className="cta-subtitle">
-              Join thousands of learners mastering Indian Sign Language today. 
-              It's free to get started!
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="donation-heart"
+            >
+              <FiHeart />
+            </motion.div>
+            <h2 className="donation-title">Support Our Mission</h2>
+            <p className="donation-subtitle">
+              Help us make Indian Sign Language education accessible to everyone. 
+              Your generous contribution helps us create more content, improve our 
+              AI technology, and reach more learners across India.
             </p>
-            <div className="cta-buttons">
-              <Link to="/register" className="btn-cta-primary">
-                <span>Get Started Now</span>
+            <div className="donation-buttons">
+              <button onClick={handleDonateClick} className="btn-donate-primary">
+                <span>💝</span>
+                <span>Donate Now</span>
                 <FiArrowRight />
-              </Link>
-              <Link to="/login" className="btn-cta-secondary">
-                Already have an account? Sign In
-              </Link>
+              </button>
             </div>
-            <div className="cta-features">
-              {['No credit card required', 'Free forever plan', 'Cancel anytime'].map(
+            <div className="donation-features">
+              {['100% goes to development', 'Tax deductible', 'Make a difference'].map(
                 (item, index) => (
-                  <div key={index} className="cta-feature">
-                    <FiCheck className="cta-feature-icon" />
+                  <div key={index} className="donation-feature">
+                    <FiCheck className="donation-feature-icon" />
                     <span>{item}</span>
                   </div>
                 )
               )}
             </div>
+            <p className="donation-note">
+              Every contribution, big or small, helps us continue our mission. 
+              Thank you for your support! 🙏
+            </p>
           </motion.div>
         </div>
       </section>
+
+      {/* QR Code Modal */}
+      <AnimatePresence>
+        {showQRModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="qr-modal-overlay"
+            onClick={() => setShowQRModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="qr-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="qr-modal-close" onClick={() => setShowQRModal(false)}>
+                <FiX />
+              </button>
+              <div className="qr-modal-content">
+                <div className="qr-modal-header">
+                  <span className="qr-modal-icon">💝</span>
+                  <h3>Scan to Donate</h3>
+                  <p>Scan the QR code with any UPI app to make your donation</p>
+                </div>
+                <div className="qr-code-container">
+                  <img 
+                    src={QR_CODE_URL} 
+                    alt="Donation QR Code" 
+                    className="qr-code-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="qr-placeholder" style={{ display: 'none' }}>
+                    <span>📱</span>
+                    <p>QR Code</p>
+                  </div>
+                </div>
+                <div className="qr-modal-actions">
+                  <button onClick={openQRInNewTab} className="btn-open-qr">
+                    Open QR in New Tab
+                    <FiArrowRight />
+                  </button>
+                </div>
+                <div className="qr-modal-footer">
+                  <p>Thank you for supporting ISL Learn! 🙏</p>
+                  <span>Your donation helps us reach more learners</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Simple Footer */}
       <footer className="home-footer">
