@@ -277,7 +277,6 @@ GET    /api/health               Service health check
 | Contributor | GitHub |
 |---|---|
 | Shaurya Singh | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) |
-| Adi Bariya | [@AdiiBariya](https://github.com/AdiiBariya) |
 
 *Built with dedication by Team Sudarshan.*
 
