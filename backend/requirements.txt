@@ -10,7 +10,7 @@ pydantic-settings
 aiosqlite
 
 # ML Dependencies - Use CPU version for Railway
-tensorflow-cpu
+tensorflow
 mediapipe
 opencv-python-headless
 numpy
