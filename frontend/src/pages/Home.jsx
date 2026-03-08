@@ -9,7 +9,7 @@ const Home = () => {
   const [showQRModal, setShowQRModal] = useState(false);
 
   // Replace this with your actual catbox QR code URL
-  const QR_CODE_URL = "https://files.catbox.moe/your-qr-code.png";
+  const QR_CODE_URL = "https://files.catbox.moe/th8j36.jpeg";
 
   useEffect(() => {
     const handleScroll = () => {
