@@ -9,10 +9,4 @@ pydantic
 pydantic-settings
 aiosqlite
 
-# ML Dependencies - Use CPU version for Railway
-tensorflow
-mediapipe
-opencv-python-headless
-numpy
-scikit-learn
-pillow
+
