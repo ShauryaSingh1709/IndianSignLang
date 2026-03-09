@@ -16,8 +16,6 @@ psycopg2-binary
 redis
 pydantic
 pydantic-settings
-python-jose[cryptography]
-passlib[bcrypt]
 python-multipart
 tensorflow
 mediapipe
