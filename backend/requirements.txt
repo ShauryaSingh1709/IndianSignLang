@@ -8,5 +8,5 @@ python-multipart
 pydantic
 pydantic-settings
 aiosqlite
-
+email-validator
 
