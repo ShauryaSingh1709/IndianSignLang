@@ -29,7 +29,7 @@
 
 ## Why ISL Learning Platform?
 
-Over 63 million people in India have significant hearing loss, yet Indian Sign Language remains largely inaccessible to the general population. This platform addresses that gap by combining cutting-edge AI with an engaging learning experience — making ISL education available to anyone with a webcam and a browser.
+Over 63 million people in India have significant hearing loss, yet Indian Sign Language remains largely inaccessible to the general population. This platform addresses that gap by combining cutting-edge AI with an engaging learning experience making ISL education available to anyone with a webcam and a browser.
 
 ---
 ## 📊 Model Performance
