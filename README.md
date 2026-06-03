@@ -1,5 +1,5 @@
 <div align="center">
-
+ 
 # ISL Learning Platform
 
 ### Breaking Barriers, One Sign at a Time
