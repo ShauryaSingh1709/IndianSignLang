@@ -284,8 +284,6 @@ GET    /api/health               Service health check
 | Shaurya Singh | [@ShauryaSingh1709](https://github.com/ShauryaSingh1709) | 
 | Adi Bariya | [@AdiBariya](https://github.com/AdiBariya) |
 
-*Built with dedication by Team Sudarshan.*
-
 </div>
 
 ---
