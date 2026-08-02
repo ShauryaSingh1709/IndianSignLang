@@ -19,7 +19,8 @@ pydantic-settings
 python-multipart
 tensorflow
 mediapipe
-opencv-python-headless
+# Use headless OpenCV in server/CI environments to avoid X11 dependency errors (e.g., libxcb.so.1).
+opencv-python-headless==4.8.1.78
 numpy
 scikit-learn
 Pillow
